@@ -1,4 +1,4 @@
-// Esse código foi desenvolvido em conjunto( Luiz e Adson)
+// Esse código foi desenvolvido em conjunto( Luiz e Adson).
 import React, { Component } from 'react';
 
 export default class Header extends Component {
