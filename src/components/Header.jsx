@@ -1,5 +1,6 @@
 // Esse código foi desenvolvido em conjunto( Luiz e Adson).
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   constructor() {
@@ -31,6 +32,9 @@ export default class Header extends Component {
             onChange={ this.handleChange }
             value={ searchBox }
           />
+          <Link data-testid="shopping-cart-button" to="/cart">
+            <button type="button">Carrinho</button>
+          </Link>
         </div>
       </header>
     );
