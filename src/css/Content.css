@@ -1,0 +1,16 @@
+.main-page {
+  display: flex;
+  padding-top: 40px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+}
