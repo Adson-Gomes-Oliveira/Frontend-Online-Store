@@ -32,10 +32,13 @@ export default class Header extends Component {
             onChange={ this.handleChange }
             value={ searchBox }
           />
-          <Link data-testid="shopping-cart-button" to="/cart">
-            <button type="button">Carrinho</button>
-          </Link>
+          <span className="material-icons-outlined">
+            search
+          </span>
         </div>
+        <Link data-testid="shopping-cart-button" to="/cart">
+          <button type="button">Carrinho</button>
+        </Link>
       </header>
     );
   }
