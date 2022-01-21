@@ -6,8 +6,8 @@
 .categories {
   display: flex;
   flex-direction: column;
-  padding-right: 100px;
   padding-left: 10px;
+  padding-right: 100px;
 }
 
 .products {
