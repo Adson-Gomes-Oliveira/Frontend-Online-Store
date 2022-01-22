@@ -30,6 +30,7 @@ export default class Products extends Component {
   }
 
   render() {
+    console.log('teste');
     const { products } = this.state;
     return (
       <section className="list__products">
