@@ -12,7 +12,7 @@ export default class App extends Component {
     };
   }
 
-  // Pega o valor do input searchBox no elemento <Header />
+  // Pega o valor do input searchBox no elemento <Header /> e salva no state
   getSearchBox = (product) => {
     this.setState({
       searchBox: product,
@@ -24,7 +24,7 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Header getSearchBox={ this.getSearchBox } />
-        <Content product={ searchBox } />
+        <Content productResearched={ searchBox } />
       </BrowserRouter>
     );
   }

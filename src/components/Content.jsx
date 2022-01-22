@@ -1,4 +1,5 @@
-// Esse código foi desenvolvido em conjunto( Luiz e Adson)
+// codigo fonte produzido em pair programing com os integrantes( Luiz e Adson).
+// codigo fonte produzido em pair programing com os integrantes( Luiz e Rafael).
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -30,16 +31,20 @@ export default class Content extends Component {
 
   render() {
     const { categories } = this.state;
-    const { product } = this.props;
+    const { productResearched } = this.props;
     return (
       <div className="main-page">
         <section className="categories">
-          { categories.map((categorie) => (
-            <label data-testid="category" key={ categorie.name } htmlFor={ categorie.id }>
+          {categories.map((categorie) => (
+            <label
+              data-testid="category"
+              key={ categorie.name }
+              htmlFor={ categorie.id }
+            >
               <input id={ categorie.id } type="radio" />
-              { categorie.name }
+              {categorie.name}
             </label>
-          )) }
+          ))}
         </section>
         <section className="products">
           <Switch>
@@ -47,7 +52,10 @@ export default class Content extends Component {
             <Route path="/cart" component={ ShoppingCart } />
 
             {/* Estrutura do Route abaixo foi consultado no site:https://devpleno.com/router-props-2 */}
-            <Route path="/products" render={ () => <Products props={ product } /> } />
+            <Route
+              path="/products"
+              render={ () => <Products product={ productResearched } /> }
+            />
           </Switch>
         </section>
       </div>
@@ -56,5 +64,5 @@ export default class Content extends Component {
 }
 
 Content.propTypes = {
-  product: PropTypes.string.isRequired,
+  productResearched: PropTypes.string.isRequired,
 };
