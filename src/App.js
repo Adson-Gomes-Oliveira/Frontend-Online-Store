@@ -1,31 +1,18 @@
-import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Content from './components/Content';
-import Header from './components/Header';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-export default class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      searchBox: '',
-    };
-  }
-
-  // Pega o valor do input searchBox no elemento <Header /> e salva no state
-  getSearchBox = (product) => {
-    this.setState({
-      searchBox: product,
-    });
-  }
-
+class App extends React.Component {
   render() {
-    const { searchBox } = this.state;
     return (
-      <BrowserRouter>
-        <Header getSearchBox={ this.getSearchBox } />
-        <Content productResearched={ searchBox } />
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={ Home } />
+            <Route path="/ShoppingCart" component={ ShoppingCart } />
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }
+export default App;
