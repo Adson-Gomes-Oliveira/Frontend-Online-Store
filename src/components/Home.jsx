@@ -13,17 +13,13 @@ class Home extends React.Component {
       id: '',
       text: '',
     };
-
-    this.getCategoriesList = this.getCategoriesList.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.getProductsList = this.getProductsList.bind(this);
   }
 
   componentDidMount() {
     this.getCategoriesList();
   }
 
-  handleChange({ target }) {
+  handleChange = ({ target }) => {
     this.setState({
       text: target.value,
       id: target.id,
@@ -40,6 +36,12 @@ class Home extends React.Component {
   getCategoriesList = async () => {
     const categorieList = await api.getCategories();
     this.setState({ categories: categorieList });
+  }
+
+  getProductsFromCategory = async ({ target }) => {
+    const productList = await api.getProductsFromCategoryAndQuery(target.id);
+    this.setState({ products: productList.results });
+    console.log(target.id);
   }
 
   render() {
@@ -72,6 +74,9 @@ class Home extends React.Component {
               <button
                 type="button"
                 data-testid="category"
+                name={ categorie.name }
+                id={ categorie.id }
+                onClick={ this.getProductsFromCategory }
               >
                 { categorie.name }
               </button>
