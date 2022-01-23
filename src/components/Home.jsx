@@ -1,5 +1,6 @@
 // Esse código foi desenvolvido em conjunto( Luiz e Adson)
 import React, { Component } from 'react';
+import Header from './Header';
 
 export default class Home extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class Home extends Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+        <Header />
       </section>
     );
   }
