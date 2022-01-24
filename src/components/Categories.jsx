@@ -29,7 +29,6 @@ export default class Categories extends Component {
     } = this.props;
     const { id } = event.target;
     getCategorieId(id);
-    console.log(id);
   }
 
   render() {
