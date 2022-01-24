@@ -1,39 +1,39 @@
 // codigo fonte produzido em pair programing com os integrantes( Luiz e Adson).
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 export default class Header extends Component {
-  constructor() {
-    super();
+  // constructor() {
+  //   super();
 
-    this.state = {
-      searchBox: '',
-    };
-  }
+  //   this.state = {
+  //     searchBox: '',
+  //   };
+  // }
 
-  handleChange = (event) => {
-    const { value, name } = event.target;
+  // handleChange = (event) => {
+  //   const { value, name } = event.target;
 
-    this.setState({
-      [name]: value,
-    });
-  }
+  //   this.setState({
+  //     [name]: value,
+  //   });
+  // }
 
-  searchProduct = () => {
-    const {
-      getSearchBox,
-    } = this.props;
-    const { searchBox } = this.state;
-    getSearchBox(searchBox);
-  }
+  // searchProduct = () => {
+  //   const {
+  //     getSearchBox,
+  //   } = this.props;
+  //   const { searchBox } = this.state;
+  //   getSearchBox(searchBox);
+  // }
 
   render() {
-    const { searchBox } = this.state;
+    // const { searchBox } = this.state;
 
     return (
       <header>
-        <div>
+        {/* <div>
           <input
             data-testid="query-input"
             name="searchBox"
@@ -50,8 +50,9 @@ export default class Header extends Component {
               Pesquisar
             </button>
           </Link>
-        </div>
-        <Link data-testid="shopping-cart-button" to="/cart">
+        </div> */}
+
+        <Link data-testid="shopping-cart-button" to="/shoppingCart">
           <button type="button">Carrinho</button>
         </Link>
       </header>
@@ -59,6 +60,6 @@ export default class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  getSearchBox: PropTypes.func.isRequired,
-};
+// Header.propTypes = {
+//   getSearchBox: PropTypes.func.isRequired,
+// };
