@@ -20,8 +20,8 @@ export default class Products extends Component {
   }
 
   getProductData = async () => {
-    const { product } = this.props;
-    const data = await getProductsFromCategoryAndQuery(product);
+    const { productInput, categoryId } = this.props;
+    const data = await getProductsFromCategoryAndQuery(productInput, categoryId);
     const objectData = data.results;
 
     this.setState({
@@ -30,7 +30,6 @@ export default class Products extends Component {
   }
 
   render() {
-    console.log('teste');
     const { products } = this.state;
     return (
       <section className="list__products">
@@ -67,5 +66,6 @@ export default class Products extends Component {
 }
 
 Products.propTypes = {
-  product: PropTypes.string.isRequired,
+  productInput: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
 };

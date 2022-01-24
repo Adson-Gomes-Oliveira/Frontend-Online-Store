@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Content from './components/Content';
 import Header from './components/Header';
+import Categories from './components/Categories';
 
 export default class App extends Component {
   constructor() {
@@ -9,6 +10,7 @@ export default class App extends Component {
 
     this.state = {
       searchBox: '',
+      categorieId: undefined,
     };
   }
 
@@ -17,14 +19,21 @@ export default class App extends Component {
     this.setState({
       searchBox: product,
     });
-  }
+  };
+
+  getCategorieId = (id) => {
+    this.setState({
+      categorieId: id,
+    });
+  };
 
   render() {
-    const { searchBox } = this.state;
+    const { searchBox, categorieId } = this.state;
     return (
       <BrowserRouter>
         <Header getSearchBox={ this.getSearchBox } />
-        <Content productResearched={ searchBox } />
+        <Categories getCategorieId={ this.getCategorieId } />
+        <Content selectedCategory={ categorieId } productResearched={ searchBox } />
       </BrowserRouter>
     );
   }
