@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: yellow;
+}
+
+header h1{
+  margin: 10px;
+  color: black;
+}
+
+.search-box-style {
+  display: flex;
+  justify-content: space-between ;
+  background-color: #118ee2;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.search-box-style input {
+  width: 300px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid black;
+  margin-left: 15px;
+}
+
+.search-box-style button {
+  padding: 10px 10px;
+  background-color: #118ee2;
+  border-radius: 5px;
+  color: black;
+  font-weight: 700;
+  border: 2px solid black;
+}
+
+.search-button {
+  margin-left: 5px;
+}
+
+.cart-button {
+  margin-right: 15px;
+}

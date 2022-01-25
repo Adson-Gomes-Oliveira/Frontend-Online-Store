@@ -5,14 +5,14 @@ import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from './Home';
 import ShoppingCart from './ShoppingCart';
-import '../css/Content.css';
 import Products from './Products';
+import './css/Content.css';
 
 export default class Content extends Component {
   render() {
     const { productResearched, selectedCategory } = this.props;
     return (
-      <div className="main-page">
+      <div className="main-content">
         <Switch>
           <Route exact path="/" component={ Home } />
           <Route path="/shoppingCart" component={ ShoppingCart } />

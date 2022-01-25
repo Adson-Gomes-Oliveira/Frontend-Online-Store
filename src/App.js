@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Content from './components/Content';
 import Header from './components/Header';
 import Categories from './components/Categories';
+import './App.css';
 
 export default class App extends Component {
   constructor() {
@@ -10,7 +11,7 @@ export default class App extends Component {
 
     this.state = {
       searchBox: '',
-      categorieId: undefined,
+      categorieId: '',
     };
   }
 
@@ -32,8 +33,10 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Header getSearchBox={ this.getSearchBox } />
-        <Categories getCategorieId={ this.getCategorieId } />
-        <Content selectedCategory={ categorieId } productResearched={ searchBox } />
+        <div className="main-page">
+          <Categories getCategorieId={ this.getCategorieId } />
+          <Content selectedCategory={ categorieId } productResearched={ searchBox } />
+        </div>
       </BrowserRouter>
     );
   }

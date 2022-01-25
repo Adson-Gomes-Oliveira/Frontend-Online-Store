@@ -4,7 +4,7 @@ import React from 'react';
 class Home extends React.Component {
   render() {
     return (
-      <section>
+      <section className="no-product-text">
         <p
           data-testid="home-initial-message"
         >

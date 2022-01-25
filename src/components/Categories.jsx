@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
+import './css/Categories.css';
 
 export default class Categories extends Component {
   constructor() {
@@ -20,6 +21,7 @@ export default class Categories extends Component {
 
   async getCategoriesList() {
     const categoriesReceived = await getCategories();
+    console.log(categoriesReceived);
     this.setState({ categories: [...categoriesReceived] });
   }
 
@@ -34,9 +36,10 @@ export default class Categories extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <div>
+      <section className="categories">
+        <h2>Categorias de Produtos</h2>
         {categories.map((categorie) => (
-          <Link key={ categorie.id } to="/products">
+          <Link className="categories-style" key={ categorie.id } to="/products">
             <label
               data-testid="category"
               key={ categorie.name }
@@ -46,13 +49,13 @@ export default class Categories extends Component {
                 id={ categorie.id }
                 type="radio"
                 name="categoria"
-                onChange={ this.onHandleRadio }
+                onClick={ this.onHandleRadio }
               />
               {categorie.name}
             </label>
           </Link>
         ))}
-      </div>
+      </section>
     );
   }
 }
