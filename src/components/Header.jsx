@@ -12,7 +12,7 @@ export default class Header extends Component {
       searchBox: '',
     };
   }
-
+  
    handleChange = (event) => {
      const { value, name } = event.target;
 

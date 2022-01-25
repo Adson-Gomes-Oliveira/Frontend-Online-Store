@@ -27,8 +27,9 @@ export default class App extends Component {
       categorieId: id,
     });
   };
-
+  
   render() {
+
     const { searchBox, categorieId } = this.state;
     return (
       <BrowserRouter>
@@ -41,3 +42,4 @@ export default class App extends Component {
     );
   }
 }
+export default App;
