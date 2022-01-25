@@ -1,0 +1,21 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  background-color: #118ee2;
+  width: 400px;
+  color: black;
+}
+
+.categories-style {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+
+.categories-style input {
+  width: 30px;
+}
+
+section h2 {
+  align-self: center;
+}
