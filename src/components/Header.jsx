@@ -1,71 +1,66 @@
-// codigo fonte produzido em pair programing com os integrantes( Luiz e Adson).
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-import './css/Header.css';
+import { Link, withRouter } from 'react-router-dom';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 
-export default class Header extends Component {
+class Header extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      searchBox: '',
+      inputText: '',
     };
+
+    this.onHandleInput = this.onHandleInput.bind(this);
+    this.getProductsFromInput = this.getProductsFromInput.bind(this);
   }
-  
-   handleChange = (event) => {
-     const { value, name } = event.target;
 
-     this.setState({
-       [name]: value,
-     });
-   }
+  onHandleInput(event) {
+    this.setState({ inputText: event.target.value });
+  }
 
-   searchProduct = () => {
-     const {
-       getSearchBox,
-     } = this.props;
-     const { searchBox } = this.state;
-     getSearchBox(searchBox);
-   }
+  // Função que faz a requisição à API e redireciona para a página com os produtos recebidos
+  async getProductsFromInput() {
+    const { inputText } = this.state;
+    const { history } = this.props;
+    const productsReceived = await getProductsFromCategoryAndQuery('', inputText);
+    const { results } = productsReceived;
+    // Aqui a função redireciona para a url que renderiza os produtos e envia a lista com esses produtos recebidos
+    history.push({
+      pathname: '/productsFromSearch',
+      state: results,
+    });
+  }
 
-   render() {
-     const { searchBox } = this.state;
-
-     return (
-       <header>
-         <h1>Frontend Online Store</h1>
-         <div className="search-box-style">
-           <div className="search-area">
-             <input
-               data-testid="query-input"
-               name="searchBox"
-               type="text"
-               onChange={ this.handleChange }
-               value={ searchBox }
-             />
-             <Link to="/products">
-               <button
-                 data-testid="query-button"
-                 type="button"
-                 onClick={ this.searchProduct }
-                 className="search-button"
-               >
-                 Pesquisar
-               </button>
-             </Link>
-           </div>
-           <div className="cart-area">
-             <Link data-testid="shopping-cart-button" to="/shoppingCart">
-               <button className="cart-button" type="button">Carrinho</button>
-             </Link>
-           </div>
-         </div>
-       </header>
-     );
-   }
+  render() {
+    const { inputText } = this.state;
+    return (
+      <section>
+        <input
+          onChange={ this.onHandleInput }
+          value={ inputText }
+          type="text"
+          data-testid="query-input"
+        />
+        <button
+          onClick={ this.getProductsFromInput }
+          type="button"
+          data-testid="query-button"
+        >
+          Pesquisar
+        </button>
+        <Link data-testid="shopping-cart-button" to="/cart">
+          <button type="button">Carrinho</button>
+        </Link>
+      </section>
+    );
+  }
 }
 
 Header.propTypes = {
-  getSearchBox: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
+
+export default withRouter(Header);

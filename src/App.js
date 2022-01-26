@@ -1,45 +1,24 @@
-import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Content from './components/Content';
-import Header from './components/Header';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ShoppingCart from './components/ShoppingCart';
 import Categories from './components/Categories';
-import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Products from './components/Products';
 
-export default class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      searchBox: '',
-      categorieId: '',
-    };
-  }
-
-  // Pega o valor do input searchBox no elemento <Header /> e salva no state
-  getSearchBox = (product) => {
-    this.setState({
-      searchBox: product,
-    });
-  };
-
-  getCategorieId = (id) => {
-    this.setState({
-      categorieId: id,
-    });
-  };
-  
-  render() {
-
-    const { searchBox, categorieId } = this.state;
-    return (
-      <BrowserRouter>
-        <Header getSearchBox={ this.getSearchBox } />
-        <div className="main-page">
-          <Categories getCategorieId={ this.getCategorieId } />
-          <Content selectedCategory={ categorieId } productResearched={ searchBox } />
-        </div>
-      </BrowserRouter>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Categories />
+      <Switch>
+        <Route exact path="/" component={ Home } />
+        <Route path="/cart" component={ ShoppingCart } />
+        <Route path="/productsFromSearch" component={ Products } />
+        <Route path="/productsFromCategorie" component={ Products } />
+      </Switch>
+    </BrowserRouter>
+  );
 }
+
 export default App;
