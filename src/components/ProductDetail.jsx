@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -44,5 +45,10 @@ class ProductDetails extends React.Component {
     );
   }
 }
+ProductDetails.propTypes = {
+  match: PropTypes.string.isRequired,
+  params: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default ProductDetails;
