@@ -1,59 +1,63 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { getCategories } from '../services/api';
-import './css/Categories.css';
+import { withRouter } from 'react-router-dom';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
-export default class Categories extends Component {
+class Categories extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      categories: [],
+      categorieList: [],
     };
 
-    this.getCategoriesList = this.getCategoriesList.bind(this);
+    this.getCategoriesFromApi = this.getCategoriesFromApi.bind(this);
+    this.onHandlerRadio = this.onHandlerRadio.bind(this);
   }
 
   componentDidMount() {
-    this.getCategoriesList();
+    this.getCategoriesFromApi();
   }
 
-  async getCategoriesList() {
-    const categoriesReceived = await getCategories();
-    console.log(categoriesReceived);
-    this.setState({ categories: [...categoriesReceived] });
-  }
-
-  onHandleRadio = (event) => {
-    const {
-      getCategorieId,
-    } = this.props;
+  // Função que faz a requisição à API e redireciona para a página com os produtos recebidos
+  async onHandlerRadio(event) {
     const { id } = event.target;
-    getCategorieId(id);
+    const productsReceived = await getProductsFromCategoryAndQuery(id, '');
+    const { results } = productsReceived;
+    // Nessa condição a função verifica se foi retornado algum produto
+    // Se conseguir retornar ele redireciona para a url que renderiza os produtos e envia a lista
+    if (results.length !== 0) {
+      const { history } = this.props;
+      history.push({
+        pathname: '/productsFromCategorie',
+        state: results,
+      });
+    }
+  }
+
+  // Faz a requisição para a API para retirnar as categorias
+  async getCategoriesFromApi() {
+    this.setState({ categorieList: await getCategories() });
   }
 
   render() {
-    const { categories } = this.state;
+    const { categorieList } = this.state;
     return (
-      <section className="categories">
-        <h2>Categorias de Produtos</h2>
-        {categories.map((categorie) => (
-          <Link className="categories-style" key={ categorie.id } to="/products">
-            <label
-              data-testid="category"
-              key={ categorie.name }
-              htmlFor={ categorie.id }
-            >
-              <input
-                id={ categorie.id }
-                type="radio"
-                name="categoria"
-                onClick={ this.onHandleRadio }
-              />
-              {categorie.name}
-            </label>
-          </Link>
+      <section>
+        {categorieList.map((categorie) => (
+          <label
+            data-testid="category"
+            key={ categorie.name }
+            htmlFor={ categorie.id }
+          >
+            <input
+              id={ categorie.id }
+              type="radio"
+              name="categoria"
+              onChange={ this.onHandlerRadio }
+            />
+            {categorie.name}
+          </label>
         ))}
       </section>
     );
@@ -61,5 +65,9 @@ export default class Categories extends Component {
 }
 
 Categories.propTypes = {
-  getCategorieId: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
+
+export default withRouter(Categories);
