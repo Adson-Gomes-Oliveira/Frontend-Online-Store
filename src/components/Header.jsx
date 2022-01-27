@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import './css/Header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -35,24 +36,34 @@ class Header extends React.Component {
   render() {
     const { inputText } = this.state;
     return (
-      <section>
-        <input
-          onChange={ this.onHandleInput }
-          value={ inputText }
-          type="text"
-          data-testid="query-input"
-        />
-        <button
-          onClick={ this.getProductsFromInput }
-          type="button"
-          data-testid="query-button"
-        >
-          Pesquisar
-        </button>
-        <Link data-testid="shopping-cart-button" to="/cart">
-          <button type="button">Carrinho</button>
-        </Link>
-      </section>
+      <header>
+        <h1>Frontend Online Store</h1>
+
+        <div className="search-box-style">
+          <div>
+            <input
+              onChange={ this.onHandleInput }
+              value={ inputText }
+              type="text"
+              data-testid="query-input"
+            />
+            <button
+              onClick={ this.getProductsFromInput }
+              type="button"
+              data-testid="query-button"
+              className="search-button"
+            >
+              Pesquisar
+            </button>
+          </div>
+
+          <div>
+            <Link data-testid="shopping-cart-button" to="/cart">
+              <button className="cart-button" type="button">Carrinho</button>
+            </Link>
+          </div>
+        </div>
+      </header>
     );
   }
 }

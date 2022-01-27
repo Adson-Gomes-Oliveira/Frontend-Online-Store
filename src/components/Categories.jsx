@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import './css/Categories.css';
 
 class Categories extends React.Component {
   constructor() {
@@ -22,7 +23,7 @@ class Categories extends React.Component {
   // Função que faz a requisição à API e redireciona para a página com os produtos recebidos
   async onHandlerRadio(event) {
     const { id } = event.target;
-    const productsReceived = await getProductsFromCategoryAndQuery(id, '');
+    const productsReceived = await getProductsFromCategoryAndQuery('', id);
     const { results } = productsReceived;
     // Nessa condição a função verifica se foi retornado algum produto
     // Se conseguir retornar ele redireciona para a url que renderiza os produtos e envia a lista
@@ -43,7 +44,8 @@ class Categories extends React.Component {
   render() {
     const { categorieList } = this.state;
     return (
-      <section>
+      <section className="categories categories-style">
+        <h2> Categorias de Produtos </h2>
         {categorieList.map((categorie) => (
           <label
             data-testid="category"
