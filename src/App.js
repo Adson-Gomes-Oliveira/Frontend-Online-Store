@@ -23,14 +23,14 @@ class App extends React.Component {
   handleClickAddToCart = async (event) => {
     const { id } = event.target; // Recupera id do produto.
     const promise = await getProducts(id); // Faz a requisição.
-    const { title, thumbnail, price, id: identifier } = await promise; // Desestructuring do JSON retornado.
+    const { title, thumbnail, price, id: identify } = await promise; // Desestructuring do JSON retornado.
     const { productsInCart } = this.state; // Desestructuring do estado para adicionar o novo objeto (produto), ao array.
 
     const result = {
       name: title,
       thumb: thumbnail,
       productPrice: price,
-      id: identifier,
+      id: identify,
     }; // Novo objeto gerado.
 
     this.setState({ productsInCart: [...productsInCart, result] }); // Objeto adicionado ao array de objetos || Produto adicionado a lista de produtos.
