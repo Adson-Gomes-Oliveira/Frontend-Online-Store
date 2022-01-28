@@ -1,18 +1,44 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+const PRODUCTS_KEY = 'productsAdded';
 
 class ShoppingCart extends React.Component {
-  render() {
-    const { productsAdded } = this.props;
+  constructor() {
+    super();
 
-    const listOfProductsInCart = productsAdded.map((product) => {
-      const { name, id, thumb, productPrice } = product;
+    this.state = {
+      products: [],
+    };
+
+    this.getProducts = this.getProducts.bind(this);
+  }
+
+  componentDidMount() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    const productsAdded = JSON.parse(localStorage.getItem(PRODUCTS_KEY));
+    if (productsAdded) {
+      this.setState({ products: productsAdded });
+    }
+  }
+
+  render() {
+    const { products } = this.state;
+
+    const listOfProductsInCart = products.map((product) => {
+      const { name, id, thumb, productPrice, quantity } = product;
 
       return (
         <li key={ id }>
           <h3 data-testid="shopping-cart-product-name">{ name }</h3>
           <img src={ thumb } alt={ name } />
           <span>{ productPrice }</span>
+          <span data-testid="shopping-cart-product-quantity">
+            Quantidade:
+            { ` ${quantity}` }
+          </span>
         </li>
       );
     });
@@ -24,14 +50,10 @@ class ShoppingCart extends React.Component {
 
     return (
       <section>
-        {productsAdded.length > 0 ? <ul>{listOfProductsInCart}</ul> : emptyCartMessage}
+        { products.length > 0 ? <ul>{listOfProductsInCart}</ul> : emptyCartMessage}
       </section>
     );
   }
 }
-
-ShoppingCart.propTypes = {
-  productsAdded: PropTypes.shape.isRequired,
-};
 
 export default ShoppingCart;
