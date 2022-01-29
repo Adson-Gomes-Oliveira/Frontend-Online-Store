@@ -5,6 +5,7 @@ import './css/Products.css';
 
 class Content extends React.Component {
   render() {
+    // Recebe os produtos
     const { location } = this.props;
     return (
       <section className="list_products">
