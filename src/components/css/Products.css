@@ -6,29 +6,29 @@
 }
 
 .card {
+  align-items: center;
   background-color: white;
+  border-radius: 8px;
+  box-shadow: 7px 7px 5px rgba(105, 105, 105, 0.5);
+  cursor: auto;
   display: flex;
   flex-direction: column;
+  height: 300px;
   justify-content: space-between;
-  align-items: center;
   margin: 15px 10px;
   width: 200px;
-  height: 300px;
-  border-radius: 8px;
-  box-shadow: 7px 7px 5px 0px rgba(105, 105, 105, 0.5);
-  cursor:auto;
 }
 
 .card-title {
-  display: flex;
-  justify-content: center;
-  background-color: #118ee2;
-  font-size: 13px;
   align-self: center;
-  width: 100%;
+  background-color: #118ee2;
   border-radius: 5px 5px 0 0;
   color: white;
+  display: flex;
+  font-size: 13px;
   font-weight: 700;
+  justify-content: center;
+  width: 100%;
 }
 
 .card-title p {
@@ -36,33 +36,33 @@
 }
 
 .card-add {
+  background-color: yellow;
+  border-radius: 0 0 5px 5px;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
   padding: 8px 0;
-  border-radius: 0 0 5px 5px;
-  background-color: yellow;
-  color:black;
+  width: 100%;
 }
 
 .card-button {
-  padding: 0 15px;
-  cursor: pointer;
-  margin-left: 15px;
-  border-style: none;
   background-color: transparent;
+  border-style: none;
+  color: black;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 700;
-  color:black;
+  margin-left: 15px;
+  padding: 0 15px;
 }
 
 .card-price {
-  margin-right: 15px;
   font-weight: 700;
+  margin-right: 15px;
 }
 
 .card img {
-  max-width: 100px;
   max-height: 150px;
+  max-width: 100px;
 }
