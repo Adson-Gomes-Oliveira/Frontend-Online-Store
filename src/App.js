@@ -4,23 +4,30 @@ import ShoppingCart from './components/ShoppingCart';
 import Categories from './components/Categories';
 import Header from './components/Header';
 import Home from './components/Home';
-import Products from './components/Products';
 import ProductDetail from './components/ProductDetail';
+import Content from './components/Content';
+import './App.css';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header />
-      <Categories />
-      <Switch>
-        <Route exact path="/" component={ Home } />
-        <Route path="/cart" component={ ShoppingCart } />
-        <Route path="/productsFromSearch" component={ Products } />
-        <Route path="/productsFromCategorie" component={ Products } />
-        <Route exact path="/ProductDetail/:id" component={ ProductDetail } />
-      </Switch>
-    </BrowserRouter>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Categories />
+          <section className="main-page main-content">
+            <Switch>
+              <Route exact path="/" component={ Home } />
+              <Route path="/cart" component={ ShoppingCart } />
+              <Route path="/productsFromSearch" component={ Content } />
+              <Route path="/productsFromCategorie" component={ Content } />
+              <Route exact path="/ProductDetail/:id" component={ ProductDetail } />
+            </Switch>
+          </section>
+        </main>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

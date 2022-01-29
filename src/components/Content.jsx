@@ -1,39 +1,30 @@
-// // codigo fonte produzido em pair programing com os integrantes( Luiz e Adson).
-// // codigo fonte produzido em pair programing com os integrantes( Luiz e Rafael).
-// import React, { Component } from 'react';
-// import { Route, Switch } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import Home from './Home';
-// import ShoppingCart from './ShoppingCart';
-// import Products from './Products';
-// import './css/Content.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Products from './Products';
+import './css/Products.css';
 
-// export default class Content extends Component {
-//   render() {
-//     const { productResearched, selectedCategory } = this.props;
-//     return (
-//       <div className="main-content">
-//         <Switch>
-//           <Route exact path="/" component={ Home } />
-//           <Route path="/shoppingCart" component={ ShoppingCart } />
+class Content extends React.Component {
+  render() {
+    // Recebe os produtos
+    const { location } = this.props;
+    return (
+      <section className="list_products">
+        {location.state.map((product) => (
+          <Products
+            key={ product.id }
+            id={ product.id }
+            title={ product.title }
+            thumbnail={ product.thumbnail }
+            price={ product.price }
+          />
+        ))}
+      </section>
+    );
+  }
+}
 
-//           {/* Estrutura do Route abaixo foi consultado no site:https://devpleno.com/router-props-2 */}
-//           <Route
-//             path="/products"
-//             render={ () => (
-//               <Products
-//                 categoryId={ selectedCategory }
-//                 productInput={ productResearched }
-//               />
-//             ) }
-//           />
-//         </Switch>
-//       </div>
-//     );
-//   }
-// }
+Content.propTypes = {
+  location: PropTypes.shape.isRequired,
+};
 
-// Content.propTypes = {
-//   productResearched: PropTypes.string.isRequired,
-//   selectedCategory: PropTypes.string.isRequired,
-// };
+export default Content;

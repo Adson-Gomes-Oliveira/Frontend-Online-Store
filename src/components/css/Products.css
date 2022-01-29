@@ -1,41 +1,68 @@
-.list__products {
+.list_products {
   display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
-  margin-top: 15px;
   width: 100%;
 }
 
 .card {
+  align-items: center;
   background-color: white;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.48);
+  border-radius: 8px;
+  box-shadow: 7px 7px 5px rgba(105, 105, 105, 0.5);
+  cursor: auto;
   display: flex;
   flex-direction: column;
   height: 300px;
   justify-content: space-between;
-  margin: 10px;
-  width: 210px;
-}
-
-.card img {
-  align-self: center;
-  margin-right: 10px;
-  max-height: 200px;
-  max-width: 200px;
+  margin: 15px 10px;
+  width: 200px;
 }
 
 .card-title {
   align-self: center;
-  font-size: 12px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-top: 15px;
+  background-color: #118ee2;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  display: flex;
+  font-size: 13px;
+  font-weight: 700;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-title p {
   width: 190px;
 }
 
+.card-add {
+  background-color: yellow;
+  border-radius: 0 0 5px 5px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.card-button {
+  background-color: transparent;
+  border-style: none;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 15px;
+  padding: 0 15px;
+}
+
 .card-price {
-  margin-bottom: 15px;
-  margin-left: 10px;
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.card img {
+  max-height: 150px;
+  max-width: 100px;
 }

@@ -1,5 +1,17 @@
-.main-page {
+main {
   background-color: #ebebeb;
+  display: flex;
+}
+
+.main-page {
   display: flex;
   justify-content: space-between;
 }
+
+.main-content {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
