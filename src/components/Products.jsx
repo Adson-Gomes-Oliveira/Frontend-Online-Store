@@ -71,11 +71,20 @@ class Products extends React.Component {
   }
 
   render() {
-    const { id, title, thumbnail, price } = this.props;
+    const { id, title, thumbnail, price, attributes } = this.props;
     return (
       <div data-testid="product" key={ id }>
         <Link
-          to={ `/productDetail/${id}` }
+          to={ {
+            pathname: `/productDetail/${id}`,
+            productInfo: {
+              idProduct: id,
+              titleProduct: title,
+              thumbProduct: thumbnail,
+              priceProduct: price,
+              attrProduct: attributes,
+            },
+          } }
           style={ { textDecoration: 'none', color: 'black' } }
           data-testid="product-detail-link"
         >
@@ -119,6 +128,7 @@ Products.propTypes = {
   title: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  attributes: PropTypes.shape.isRequired,
 };
 
 export default Products;

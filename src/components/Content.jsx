@@ -16,6 +16,7 @@ class Content extends React.Component {
             title={ product.title }
             thumbnail={ product.thumbnail }
             price={ product.price }
+            attributes={ product.attributes }
           />
         ))}
       </section>
