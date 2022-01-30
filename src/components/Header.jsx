@@ -86,6 +86,8 @@ class Header extends React.Component {
   }
 }
 
+// Final Code
+
 Header.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
