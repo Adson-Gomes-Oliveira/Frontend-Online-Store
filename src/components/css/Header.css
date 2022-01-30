@@ -1,38 +1,54 @@
 header {
   align-items: center;
-  background-color: yellow;
+  background-color: #1b1b1b;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-header h1 {
-  color: black;
-  margin: 10px;
-}
-
-.search-box-style {
-  background-color: #118ee2;
+.section-header {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
+  flex-direction: row;
+  height: 150px;
+  justify-content: space-around;
   width: 100%;
 }
 
-.search-box-style input {
-  border: 2px solid black;
-  border-radius: 8px;
+.site-logo {
   margin-left: 15px;
-  padding: 8px;
-  width: 300px;
+  padding: 0 60px;
+  width: 250px;
+}
+
+.search-box-style {
+  border-radius: 8px;
+  display: flex;
+}
+
+.search-box-style input {
+  border: none;
+  border-radius: 8px;
+  color: #ff7800;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 15px;
+  width: 500px;
+}
+
+.search-box-style textarea:focus, input:focus {
+  box-shadow: 0;
+  outline: 0;
 }
 
 .search-box-style button {
-  background-color: #118ee2;
-  border: 2px solid black;
-  border-radius: 5px;
-  color: black;
+  background-color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  color: #ff7800;
+  font-size: 20px;
   font-weight: 700;
+  margin-left: -10px;
   padding: 10px;
 }
 
@@ -40,6 +56,25 @@ header h1 {
   margin-left: 5px;
 }
 
+.sign-in {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-weight: 700;
+  justify-content: space-between;
+  margin-left: 20px;
+  width: 170px;
+}
+
+.icon-user {
+  color: #ff7800;
+  font-size: 45px;
+}
+
 .cart-button {
-  margin-right: 15px;
+  background: none;
+  border: none;
+  color: #ff7800;
+  font-size: 40px;
 }

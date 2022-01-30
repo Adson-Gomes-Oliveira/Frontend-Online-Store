@@ -1,6 +1,12 @@
 main {
-  background-color: #ebebeb;
+  background-color: white;
   display: flex;
+  height: 100%;
+}
+
+@font-face {
+  font-family: logoFont;
+  src: url('./fonts/frontendOS_font.ttf');
 }
 
 .main-page {

@@ -31,7 +31,7 @@ class Products extends React.Component {
     const result = {
       name: productTitle,
       thumb: productThumb,
-      Price: productPrice,
+      price: productPrice,
       id: productId,
       quantity: 1,
     }; // Novo objeto gerado.
@@ -72,52 +72,56 @@ class Products extends React.Component {
 
   render() {
     const { id, title, thumbnail, price, attributes } = this.props;
+    const spanPrice = (<span> à vista</span>);
+    const priceFormated = price.toFixed(2).replace('.', ',');
+    const percent = 0.15;
+    const parcelBuy = 10;
+    let priceCredit = (price * percent) + price;
+    priceCredit = priceCredit.toFixed(2).replace('.', ',');
+    let priceCreditParcel = ((price * percent) + price) / parcelBuy;
+    priceCreditParcel = priceCreditParcel.toFixed(2).replace('.', ',');
     return (
       <div data-testid="product" key={ id }>
-        <Link
-          to={ {
-            pathname: `/productDetail/${id}`,
-            productInfo: {
-              idProduct: id,
-              titleProduct: title,
-              thumbProduct: thumbnail,
-              priceProduct: price,
-              attrProduct: attributes,
-            },
-          } }
-          style={ { textDecoration: 'none', color: 'black' } }
-          data-testid="product-detail-link"
-        >
-          <div className="card">
-            <span
-              className="card-title"
-            >
-              <p>{ title }</p>
-            </span>
-            <img
-              className="card-img"
-              src={ thumbnail }
-              alt=""
-            />
-
-            <div className="card-add">
-              <span
-                className="card-price"
-              >
-                { price }
+        <div className="card">
+          <Link
+            to={ {
+              pathname: `/productDetail/${id}`,
+              productInfo: {
+                idProduct: id,
+                titleProduct: title,
+                thumbProduct: thumbnail,
+                priceProduct: price,
+                attrProduct: attributes,
+              },
+            } }
+            style={ { textDecoration: 'none', color: 'black' } }
+            data-testid="product-detail-link"
+          >
+            <img className="card-img" src={ thumbnail } alt="" />
+            <div>
+              <span className="card-title">{ title }</span>
+              <span className="card-price">
+                {`R$ ${priceFormated}`}
+                {spanPrice}
+              </span>
+              <span className="card-price-credit">
+                {`ou R$ ${priceCredit}`}
+              </span>
+              <span className="card-price-credit">
+                {`10x de R$ ${priceCreditParcel} sem juros`}
               </span>
             </div>
-          </div>
-        </Link>
-        <button
-          id={ id }
-          type="button"
-          data-testid="product-add-to-cart"
-          className="card-button"
-          onClick={ this.handleClickAddToCart }
-        >
-          Comprar
-        </button>
+          </Link>
+          <button
+            id={ id }
+            type="button"
+            data-testid="product-add-to-cart"
+            className="card-button"
+            onClick={ this.handleClickAddToCart }
+          >
+            + Adicionar ao Carrinho
+          </button>
+        </div>
       </div>
     );
   }
