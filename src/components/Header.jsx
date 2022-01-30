@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import logoFOS from '../assets/logo_frontendOnlineStore.svg';
 import './css/Header.css';
 
 class Header extends React.Component {
@@ -37,29 +38,46 @@ class Header extends React.Component {
     const { inputText } = this.state;
     return (
       <header>
-        <h1>Frontend Online Store</h1>
+        <div className="section-header">
 
-        <div className="search-box-style">
-          <div>
+          <Link to="/">
+            <img className="site-logo" src={ logoFOS } alt="logo" />
+          </Link>
+          <div className="search-box-style">
             <input
               onChange={ this.onHandleInput }
               value={ inputText }
               type="text"
               data-testid="query-input"
+              placeholder="Pesquisar..."
             />
+
             <button
               onClick={ this.getProductsFromInput }
               type="button"
               data-testid="query-button"
-              className="search-button"
+              className="material-icons"
             >
-              Pesquisar
+              search
             </button>
+          </div>
+
+          <div className="sign-in">
+            <span className="material-icons icon-user">
+              manage_accounts
+            </span>
+            <span>
+              Entre
+              <br />
+              ou Cadastre-se
+            </span>
           </div>
 
           <div>
             <Link data-testid="shopping-cart-button" to="/cart">
-              <button className="cart-button" type="button">Carrinho</button>
+              <button className="cart-button material-icons" type="button">
+                shopping_cart
+              </button>
             </Link>
           </div>
         </div>
@@ -67,6 +85,8 @@ class Header extends React.Component {
     );
   }
 }
+
+// Final Code
 
 Header.propTypes = {
   history: PropTypes.shape({

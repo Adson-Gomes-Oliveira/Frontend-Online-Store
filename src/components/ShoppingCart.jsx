@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PRODUCTS_KEY = 'productsAdded';
 
@@ -42,7 +43,6 @@ class ShoppingCart extends React.Component {
         </li>
       );
     });
-
     const emptyCartMessage = (
       <h3 data-testid="shopping-cart-empty-message">
         Seu carrinho está vazio
@@ -51,6 +51,9 @@ class ShoppingCart extends React.Component {
     return (
       <section>
         { products.length > 0 ? <ul>{listOfProductsInCart}</ul> : emptyCartMessage}
+        <Link to="/checkout">
+          <button data-testid="checkout-products" type="button">Realizar Compra</button>
+        </Link>
       </section>
     );
   }

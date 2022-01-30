@@ -7,6 +7,7 @@ import Home from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import Content from './components/Content';
 import './App.css';
+import Checkout from './components/Checkout';
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class App extends React.Component {
               <Route path="/productsFromSearch" component={ Content } />
               <Route path="/productsFromCategorie" component={ Content } />
               <Route exact path="/ProductDetail/:id" component={ ProductDetail } />
+              <Route exact path="/checkout" component={ Checkout } />
             </Switch>
           </section>
         </main>
