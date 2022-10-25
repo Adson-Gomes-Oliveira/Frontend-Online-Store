@@ -46,7 +46,7 @@ Aplicação que simula uma loja online com pesquisa de produtos, carrinho de com
 
 >Primeiro faça o clone deste repositório em sua maquina.
 ```
-git clone git@github.com:Adson-Gomes-Oliveira/Recipes-App.git
+git clone git@github.com:Adson-Gomes-Oliveira/Frontend-Online-Store.git
 ```
 >Após o clone ser concluído com sucesso, entre no diretório e utilize o comando `npm install`.
 
