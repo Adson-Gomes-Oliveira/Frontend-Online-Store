@@ -56,7 +56,7 @@ git clone git@github.com:Adson-Gomes-Oliveira/Recipes-App.git
 
 
 ### Informações adicionais
-Versão apenas Mobile. Desenvolvido com Node 16 e muita dedicação.
+Versão apenas Desktop. Desenvolvido com Node 16 e muita dedicação.
 
 ---
 
